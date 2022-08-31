@@ -3,6 +3,7 @@
 #include <limits>
 
 #include "utilities.hpp"
+#include "data_types.hpp"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ int main(int argc, char** argv)
     return -1;
   }
 
-  long elements = atol(argv[1])  * (1024L*1024L) / sizeof(DTYPE);
+  long elements = atol(argv[1]) *1024 * 1024 / sizeof(DTYPE);
   DTYPE *data = nullptr;
   DTYPE out = util::init();
 
@@ -38,12 +39,13 @@ int main(int argc, char** argv)
       << chrono::duration<double>(end - start).count() << " s" << endl;
   }
 
-  std::cout << "Reduced value is:" << out <<  "\n";
+  std::cout<< "SIZE_OF_ELEMENT:" << sizeof(DTYPE) << "\n"; 
 
   if ( util::validate(out, elements) )
     std::cout << "PASS \n";
   else
     std::cout << "FAIL\n";
+
 
   free(data);
 

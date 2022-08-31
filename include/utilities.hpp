@@ -10,7 +10,7 @@ class max_OP{
 
   template<class P>
   static bool validate(T val, P correct){
-    if ( val == static_cast<T>(correct) )
+    if ( val == static_cast<T>(correct-1) )
       return true;
     return false; 
   }
@@ -35,7 +35,7 @@ class min_OP{
 
   template<class P>
   static bool validate(T val, P val1){
-    if ( val == 0 )
+    if ( val == static_cast<T>(0) )
       return true;
     return false; 
   }
@@ -59,6 +59,7 @@ class add_OP{
   template<class P>
   static bool validate(T val, P val1){
     T tmp = static_cast<T>(val1);
+    T tmp1 = tmp/2.0;
     T  S = tmp/2.0 * (tmp-1);
     if ( val == S )
       return true;
