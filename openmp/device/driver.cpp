@@ -11,6 +11,12 @@ using namespace std;
 int main(int argc, char** argv)
 {
   using util = @OPER_UTIL@<DTYPE>;
+  
+  if (argc != 2){
+    std::cout << "Please provide the size of the reduction in MB" << "\n";
+    return -1;
+  }
+
   long elements = atol(argv[1])  * (1024L*1024L) / sizeof(DTYPE);
   DTYPE *data = nullptr;
   DTYPE out = util::init();
