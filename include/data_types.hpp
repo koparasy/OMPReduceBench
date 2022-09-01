@@ -214,11 +214,11 @@ struct dim32{
 
 #pragma omp declare reduction(min : dim32: \
             omp_out = omp_in > omp_out ? omp_out : omp_in )\
- initializer( omp_priv = { std::numeric_limits<double>::max() } )
+ initializer( omp_priv = dim32(std::numeric_limits<double>::max())  )
 
 #pragma omp declare reduction(max: dim32: \
         omp_out = omp_in < omp_out ? omp_out : omp_in )\
- initializer( omp_priv = {  std::numeric_limits<double>::min() } )
+ initializer( omp_priv = dim32(std::numeric_limits<double>::min()) )
 
 
 #pragma omp declare reduction(*: dim32:\
