@@ -22,6 +22,10 @@ class max_OP{
   static T init(long i){
     return static_cast<T>(i);
   }
+
+  static const char *info(){
+    return "max";
+  }
 };
 
 template<class T>
@@ -46,6 +50,10 @@ class min_OP{
 
   static T init(long i){
     return static_cast<T>(i);
+  }
+
+  static const char *info(){
+    return "min";
   }
 };
 
@@ -73,6 +81,10 @@ class add_OP{
   static T init(long i){
     return static_cast<T>(i);
   }
+
+  static const char *info(){
+    return "add";
+  }
 };
 
 template<class T>
@@ -95,6 +107,10 @@ class mult_OP{
 
   static T init(long i){
     return 1;
+  }
+
+  static const char *info(){
+    return "mult";
   }
 };
 

@@ -15,7 +15,7 @@ int main(int argc, char** argv)
   
   if (argc != 2){
     std::cout << "Please provide the size of the reduction in MB" << "\n";
-    return -1;
+    return 10;
   }
 
   long elements = atol(argv[1]) *1024 * 1024 / sizeof(DTYPE);
@@ -35,19 +35,19 @@ int main(int argc, char** argv)
       out = util::OP(out, data[i]);
     }
     auto end = chrono::high_resolution_clock::now();
-    cout << "Elapsed time in milliseconds: "
-      << chrono::duration<double>(end - start).count() << " s" << endl;
+    cout << "ELAPSED TIME: "
+      << chrono::duration<double>(end - start).count() <<  endl;
   }
 
-  std::cout<< "SIZE_OF_ELEMENT:" << sizeof(DTYPE) << "\n"; 
+  std::cout<< "SIZE OF ELEMENT:" << sizeof(DTYPE) << "\n"; 
+  std::cout<< "REDUCTION TYPE:" << util::info() << "\n";
 
-  if ( util::validate(out, elements) )
-    std::cout << "PASS \n";
-  else
+  if ( !util::validate(out, elements) ){
     std::cout << "FAIL\n";
+    return -1;
+  }
 
-
-  free(data);
+  std::cout << "PASS \n";
 
   return 0;
 }

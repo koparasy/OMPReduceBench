@@ -48,7 +48,7 @@ struct dim4{
     return dim4(x/a, y/a, z/a, w/a);
   }
 
-  friend bool operator == (const dim4& lhs, int rhs){
+  friend bool operator == (const dim4& lhs, long rhs){
     if ( lhs.x == lhs.y == lhs.z == lhs.w == static_cast<double>(rhs))
       return true;
     return false;
