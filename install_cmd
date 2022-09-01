@@ -1,0 +1,13 @@
+##llvm
+mkdir -p build && cd build && cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="-fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target=nvptx64 -march=sm_70"  ..
+
+#GCC 
+#mkdir -p build_gcc && cd build_gcc && cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="-fopenmp -foffload=\"\"-arch=sm_75\" -lm -latomic\""  ..
+
+#AMD AOMP
+#mkdir -p build_amd && cd build_amd && cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="-fopenmp -fopenmp-targets=amdgcn-amd-amdhsa -Xopenmp-target=amdgcn-amd-amdhsa -march=gfx906" ..
+
+#IGM XL
+#mkdir -p build_ibm/ && cd build_ibm && cmake -DCMAKE_CXX_COMPILER=xlc++_r -DCMAKE_CXX_FLAGS="-std=c++11 -qsmp=omp -qoffload" ..
+
+#https://github.com/ye-luo/openmp-target/wiki/OpenMP-offload-compilers
