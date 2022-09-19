@@ -26,7 +26,7 @@ int main(int argc, char** argv)
   {
 #pragma omp target teams distribute parallel for
     for ( long i = 0 ; i < elements; i++){
-      data[i] = util::init(i);
+      data[i] = util::init(i, elements);// + util::init();
     }
 
     auto start = chrono::high_resolution_clock::now();
@@ -43,6 +43,7 @@ int main(int argc, char** argv)
   std::cout<< "REDUCTION TYPE:" << util::info() << "\n";
 
   if ( !util::validate(out, elements) ){
+    std::cout << "Value is " << out << "\n";
     std::cout << "FAIL\n";
     return -1;
   }

@@ -40,14 +40,15 @@ def main(args):
   print(path_to_executables)
 
   results = []
-  for exe in glob.glob(f'{path_to_executables}/*.exe'):
-    dTName = exe.split('/')[-1].split('.')[0].split('_')[1]
-    for mb in reductionSizes:
-      for t in range(repetitions):
-        res = [dTName, mb, t] +  execute(exe, mb)
-        print(*res)
-        results.append(res)
-  df = pd.DataFrame(results, columns=['Data Type', 'Total Reduction Size', '#Exp', 'Execution Time', 'Element Size', 'Reduction Type'])
+  for impl in ['openmp', 'cub']:
+    for exe in glob.glob(f'{path_to_executables}/{impl}/device/*.exe'):
+      dTName = exe.split('/')[-1].split('.')[0].split('_')[1]
+      for mb in reductionSizes:
+        for t in range(repetitions):
+          res = [impl, dTName, mb, t] +  execute(exe, mb)
+          print(*res)
+          results.append(res)
+  df = pd.DataFrame(results, columns=['Version', 'Data Type', 'Total Reduction Size', '#Exp', 'Execution Time', 'Element Size', 'Reduction Type'])
   print(df)
   df.to_csv(args[2])
 

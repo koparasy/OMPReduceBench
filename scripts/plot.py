@@ -21,9 +21,8 @@ def main(args):
   grp_id.remove('#Exp')
   grp_id.remove('Execution Time')
   df = df.groupby(grp_id).mean().reset_index().drop('#Exp', axis=1)
-  df['Implementation']  = 'OMP-Offload'
   print(df['Execution Time'].dtypes)
-  g = sns.relplot(data=df, y='Execution Time', x='Total Reduction Size', row='Data Type', col='Reduction Type', hue='Implementation', facet_kws={'sharey': False, 'sharex': True})
+  g = sns.relplot(data=df, y='Execution Time', x='Total Reduction Size', row='Data Type', col='Reduction Type', hue='Version', facet_kws={'sharey': False, 'sharex': True})
   g.set(xscale="log")
   plt.savefig('teams_reduction.pdf')
   print(df)
