@@ -19,7 +19,7 @@ int main(int argc, char** argv)
   }
 
   long elements = atol(argv[1]) *1024 * 1024 / sizeof(DTYPE);
-  DTYPE *data = nullptr;
+  DTYPE *data = (DTYPE*) malloc(sizeof(DTYPE)*elements);
   DTYPE out = util::init();
 
 #pragma omp target data map (alloc:data[0:elements])
