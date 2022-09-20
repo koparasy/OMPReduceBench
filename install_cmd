@@ -1,5 +1,5 @@
 ##llvm
-mkdir -p build && cd build && cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="-fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target=nvptx64 -march=sm_70"  ..
+mkdir -p build && cd build && cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="-fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target=nvptx64 -march=sm_70 -fopenmp-offload-mandatory"  ..
 
 #GCC 
 #mkdir -p build_gcc && cd build_gcc && cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="-fopenmp -foffload=\"-lm -latomic -misa=sm_70\" -lm -latomic "  .. && cd ..

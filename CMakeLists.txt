@@ -1,10 +1,25 @@
-project(OpenMPReduction LANGUAGES CXX) #CUDA)
 cmake_minimum_required(VERSION 3.20.0)
+project(OpenMPReduction LANGUAGES CXX) #CUDA)
+
+option(WITH_OPENMP "Enable OpenMP Reduction tests" ON)
+option(WITH_NEW_OPENMP "Enable OpenMP Reduction tests" ON)
+option(WITH_CUB "Enable OpenMP Reduction tests" OFF)
 #find_package(CUDA REQUIRED)
 
-#find_package(OpenMPTarget REQUIRED NVPTX)
+if (WITH_OPENMP) 
+  message(STATUS "Adding default OpenMP compilation")
+  add_subdirectory(openmp)
+endif()
 
-#add_subdirectory(openmp)
-add_subdirectory(openmp_new)
-#add_subdirectory(cub)
-#add_subdirectory(thrust)
+if (WITH_NEW_OPENMP)
+  #TODO at some point openmp  new would be integraded into compiler, so this option will be disabled
+  message(STATUS "Adding default New-OpenMP compilation")
+  add_subdirectory(openmp_new)
+endif()
+
+
+if (WITH_CUB)
+  enable_language(CUDA)
+  message(STATUS "Adding CUB compilation")
+  add_subdirectory(cub)
+endif()
