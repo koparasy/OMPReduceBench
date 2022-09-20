@@ -49,6 +49,7 @@ int main(int argc, char** argv)
   }
 
   std::cout << "PASS \n";
+  free(data);
 
   return 0;
 }
