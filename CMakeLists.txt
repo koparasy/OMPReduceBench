@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20.0)
 project(OpenMPReduction LANGUAGES CXX) #CUDA)
 
 option(WITH_OPENMP "Enable OpenMP Reduction tests" ON)
-option(WITH_NEW_OPENMP "Enable OpenMP Reduction tests" ON)
+option(WITH_NEW_OPENMP "Enable OpenMP Reduction tests" OFF)
 option(WITH_CUB "Enable OpenMP Reduction tests" OFF)
 #find_package(CUDA REQUIRED)
 
