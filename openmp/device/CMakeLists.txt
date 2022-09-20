@@ -1,5 +1,3 @@
-
-
 set(data_types "double;long;int;float")#dim4;dim32")
 set(omp_reduction "reduction(*:out);reduction(+:out);reduction(min:out);reduction(max:out)")
 set(oper_util "MUL;ADD;MIN;MAX")

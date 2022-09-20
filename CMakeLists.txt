@@ -14,7 +14,7 @@ endif()
 if (WITH_NEW_OPENMP)
   #TODO at some point openmp  new would be integraded into compiler, so this option will be disabled
   message(STATUS "Adding default New-OpenMP compilation")
-  add_subdirectory(openmp_new)
+  add_subdirectory(openmpNew)
 endif()
 
 
@@ -23,3 +23,5 @@ if (WITH_CUB)
   message(STATUS "Adding CUB compilation")
   add_subdirectory(cub)
 endif()
+
+add_subdirectory(scripts)
