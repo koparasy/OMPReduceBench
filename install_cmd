@@ -2,7 +2,10 @@
 mkdir -p build && cd build && cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="-fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target=nvptx64 -march=sm_70"  ..
 
 #GCC 
-#mkdir -p build_gcc && cd build_gcc && cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="-fopenmp -foffload=\"\"-arch=sm_75\" -lm -latomic\""  ..
+#mkdir -p build_gcc && cd build_gcc && cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="-fopenmp -foffload=\"-lm -latomic -misa=sm_70\" -lm -latomic "  .. && cd ..
+
+#NVHPC
+#mkdir -p build_nvhpc && cd build_nvhpc && cmake -DCMAKE_CXX_COMPILER=nvc++ -DCMAKE_CXX_FLAGS="-mp=gpu -gpu=cc70"  ..
 
 #AMD AOMP
 #mkdir -p build_amd && cd build_amd && cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="-fopenmp -fopenmp-targets=amdgcn-amd-amdhsa -Xopenmp-target=amdgcn-amd-amdhsa -march=gfx906" ..
