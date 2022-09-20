@@ -110,7 +110,7 @@ int main(int argc, char** argv)
   }
 
   long elements = atol(argv[1])  * 1024L * 1024L / sizeof(DTYPE);
-  initGlobalData<DTYPE>(elements, &LeagueBuffer, &LeagueCounter1, &LeagueCounter2);
+  initGlobalData<DTYPE>(elements, nullptr, nullptr, nullptr); //&LeagueBuffer, &LeagueCounter1, &LeagueCounter2);
   DTYPE *data = nullptr;
   DTYPE out = util::init();
 
