@@ -40,12 +40,16 @@ def main(args):
   for impl in @REDUCTION_IMPLEMENTATIONS@:
     for exe in glob.glob(f'@REDUCTION_BUILD_DIR@/{impl}/device/*.exe'):
       dTName = exe.split('/')[-1].split('.')[0].split('_')[1]
+      policy = "default"
+      if "openmpNew" in impl:
+        policy = exe.split('/')[-1].split('.')[0].split('_')[2]
+      dTName = exe.split('/')[-1].split('.')[0].split('_')[1]
       for mb in reductionSizes:
         for t in range(repetitions):
-          res = [impl, dTName, mb, t] +  execute(exe, mb)
+          res = [impl, dTName, policy, mb, t] +  execute(exe, mb)
           print(*res)
           results.append(res)
-  df = pd.DataFrame(results, columns=['Version', 'Data Type', 'Total Reduction Size', '#Exp', 'Execution Time', 'Element Size', 'Reduction Type'])
+  df = pd.DataFrame(results, columns=['Version', 'Data Type', 'Policy', 'Total Reduction Size', '#Exp', 'Execution Time', 'Element Size', 'Reduction Type'])
   print(df)
   df.to_csv(args[1])
 
