@@ -1,6 +1,6 @@
 set(data_types "double;long;int;float")#dim4;dim32")
-set(omp_reduction "reduction(*:out);reduction(+:out);reduction(min:out);reduction(max:out)")
-set(oper_util "MUL;ADD;MIN;MAX")
+set(omp_reduction "reduction(+:out);reduction(min:out);reduction(max:out)")
+set(oper_util "ADD;MIN;MAX")
 
 foreach(dt IN LISTS data_types)
   foreach(ompR op IN ZIP_LISTS omp_reduction oper_util)

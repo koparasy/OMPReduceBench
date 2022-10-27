@@ -7,12 +7,12 @@
 
 using namespace std;
 
-#define DTYPE @REDUCTION_TYPE@ 
+#define DTYPE @REDUCTION_TYPE@
 
 int main(int argc, char** argv)
 {
   using util = @OPER_UTIL@<DTYPE>;
-  
+
   if (argc != 2){
     std::cout << "Please provide the size of the reduction in MB" << "\n";
     return 10;

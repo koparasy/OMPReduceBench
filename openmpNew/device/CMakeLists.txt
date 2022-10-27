@@ -1,8 +1,8 @@
 
 
 set(data_types "double;long;int;float")#dim4;dim32")
-set(omp_reduction "reduction(*:out);reduction(+:out);reduction(min:out);reduction(max:out)")
-set(oper_util "MUL;ADD;MIN;MAX")
+set(omp_reduction "reduction(+:out);reduction(min:out);reduction(max:out)")
+set(oper_util "ADD;MIN;MAX")
 set(reduce_policies "_REDUCE_ATOMICALLY_AFTER_WARP;_REDUCE_ATOMICALLY_AFTER_TEAM;_REDUCE_LEAGUE_VIA_ATOMICS_WITH_OFFSET;_REDUCE_LEAGUE_VIA_LARGE_BUFFER")
 set(policy_name "AAW;AAT;LAWO;LLB")
 
